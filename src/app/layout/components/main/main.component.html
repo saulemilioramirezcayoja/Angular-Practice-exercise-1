@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <app-sidebar
+    [isCollapsed]="isCollapsed"
+    (toggleCollapse)="toggleSidebar($event)">
+  </app-sidebar>
+
+  <div class="main-container" [ngClass]="{'expanded': !isCollapsed}">
+    <app-header></app-header>
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

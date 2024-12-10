@@ -1,0 +1,106 @@
+.header {
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: calc(100%);
+  height: 64px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header.sidebar-expanded {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-left svg {
+  width: 24px;
+  height: 24px;
+  stroke: #64748b;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.header-left svg:hover {
+  stroke: #3b82f6;
+  background: rgba(59, 130, 246, 0.08);
+  transform: scale(1.1);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logout {
+  background: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.logout::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(239, 68, 68, 0.08);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.logout:hover::before {
+  width: 150%;
+  height: 150%;
+}
+
+.logout svg {
+  width: 22px;
+  height: 22px;
+  stroke: #64748b;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.logout:hover svg {
+  stroke: #ef4444;
+  transform: translateX(-2px);
+}
+
+@keyframes ripple {
+  to {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+.logout:active::after,
+.header-left svg:active {
+  transform: scale(0.95);
+}
